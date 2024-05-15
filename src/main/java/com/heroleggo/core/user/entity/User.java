@@ -5,6 +5,12 @@ public class User {
     private String name;
     private Type type;
 
+    public User(Long id, String name, Type type) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+    }
+
     public Long getId() {
         return this.id;
     }
