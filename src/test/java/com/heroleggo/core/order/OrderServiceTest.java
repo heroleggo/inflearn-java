@@ -1,5 +1,6 @@
 package com.heroleggo.core.order;
 
+import com.heroleggo.core.config.AppConfig;
 import com.heroleggo.core.order.entity.Order;
 import com.heroleggo.core.order.service.OrderService;
 import com.heroleggo.core.order.service.OrderServiceImpl;
@@ -8,11 +9,19 @@ import com.heroleggo.core.user.entity.User;
 import com.heroleggo.core.user.service.UserService;
 import com.heroleggo.core.user.service.UserServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    private final UserService userService = new UserServiceImpl();
-    private final OrderService orderService = new OrderServiceImpl();
+    private UserService userService;
+    private OrderService orderService;
+
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        userService = appConfig.userService();
+        orderService = appConfig.orderService();
+    }
 
     @Test
     public void createOrderTest() {

@@ -9,8 +9,13 @@ import com.heroleggo.core.user.service.UserServiceImpl;
 
 public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository = new MemoryOrderRepository();
-    private final DiscountService discountService = new TemporaryDiscountService();
-    private final UserService userService = new UserServiceImpl();
+    private final DiscountService discountService;
+    private final UserService userService;
+
+    public OrderServiceImpl(UserService userService, DiscountService discountService) {
+        this.userService = userService;
+        this.discountService = discountService;
+    }
 
     @Override
     public Order createOrder(Long userId, String goodName, Long price) {

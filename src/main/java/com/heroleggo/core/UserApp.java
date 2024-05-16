@@ -1,5 +1,6 @@
 package com.heroleggo.core;
 
+import com.heroleggo.core.config.AppConfig;
 import com.heroleggo.core.order.entity.Order;
 import com.heroleggo.core.order.service.OrderService;
 import com.heroleggo.core.order.service.OrderServiceImpl;
@@ -11,8 +12,9 @@ import com.heroleggo.core.user.service.UserServiceImpl;
 public class UserApp {
 
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        UserService userService = appConfig.userService();
+        OrderService orderService = appConfig.orderService();
 
         User a = new User(1L, "A", Type.VIP);
 
