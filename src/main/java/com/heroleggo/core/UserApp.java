@@ -8,13 +8,19 @@ import com.heroleggo.core.user.entity.Type;
 import com.heroleggo.core.user.entity.User;
 import com.heroleggo.core.user.service.UserService;
 import com.heroleggo.core.user.service.UserServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class UserApp {
 
     public static void main(String[] args) {
-        AppConfig appConfig = new AppConfig();
-        UserService userService = appConfig.userService();
-        OrderService orderService = appConfig.orderService();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        UserService userService = applicationContext.getBean("userService", UserService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+
+//        AppConfig appConfig = new AppConfig();
+//        UserService userService = appConfig.userService();
+//        OrderService orderService = appConfig.orderService();
 
         User a = new User(1L, "A", Type.VIP);
 
