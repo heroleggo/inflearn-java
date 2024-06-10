@@ -1,4 +1,4 @@
-package com.heroleggo.core;
+package com.heroleggo.core.bean;
 
 import static org.assertj.core.api.Assertions.*;
 
