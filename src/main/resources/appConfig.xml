@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="userService" class="com.heroleggo.core.user.service.UserServiceImpl">
+    <constructor-arg name="userRepository" ref="userRepository" />
+  </bean>
+
+  <bean id="userRepository" class="com.heroleggo.core.user.repository.MemoryUserRepository" />
+
+  <bean id="orderService" class="com.heroleggo.core.order.service.OrderServiceImpl">
+    <constructor-arg name="userService" ref="userService" />
+    <constructor-arg name="discountService" ref="discountService" />
+  </bean>
+
+  <bean id="discountService" class="com.heroleggo.core.order.service.RateDiscountService" />
+</beans>
